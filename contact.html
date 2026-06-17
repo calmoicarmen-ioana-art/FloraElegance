@@ -124,7 +124,6 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
         }
 
-        /* Schimbat din div în form pentru trimiterea datelor */
         .contact-card {
             display: flex;
             flex-direction: column;
@@ -349,27 +348,90 @@
                     </nav>
                 </div>
 
-                <div class="hero-section">
-                    <h1>Contactează-ne</h1>
-                    <p>Ai întrebări despre aranjamentele noastre florale sau vrei o comandă personalizată? Lasă-ne un mesaj și îți vom răspunde în cel mai scurt timp.</p>
-                </div>
+                <section class="hero-section">
+                    <h1>Contacteaza-ne</h1>
+                    <p>Suntem aici pentru a raspunde la toate intrebarile tale.</p>
+                </section>
 
-                <div class="main-section">
+                <section class="main-section">
                     <div>
-                        <h2 class="section-title">Trimite un mesaj</h2>
-                        
-                        <!-- REPARATĂ: Aici a fost adăugat link-ul tău SheetMonkey și atributele 'name' necesare pentru Excel -->
+                        <!-- MODIFICAT AICI: Am adăugat link-ul tău SheetMonkey și metoda POST -->
                         <form class="contact-card" action="https://sheetmonkey.io" method="post">
+                            <h2 class="section-title">Trimite-ne un mesaj</h2>
                             <div class="form-group">
                                 <label for="name">Nume complet</label>
-                                <input type="text" id="name" name="Nume" required placeholder="Ex: Maria Ionescu">
+                                <!-- MODIFICAT AICI: Adăugat name="Nume" -->
+                                <input type="text" id="name" name="Nume" required placeholder="Introdu numele tău">
                             </div>
                             <div class="form-group">
-                                <label for="email">Adresă de email</label>
-                                <input type="email" id="email" name="Email" required placeholder="Ex: maria@example.com">
+                                <label for="email">Email</label>
+                                <!-- MODIFICAT AICI: Adăugat name="Email" -->
+                                <input type="email" id="email" name="Email" required placeholder="Introdu email-ul">
                             </div>
                             <div class="form-group">
-                                <label for="message">Mesajul tău</label>
-                                <textarea id="message" name="Mesaj" required placeholder="Scrie aici mesajul tău..."></textarea>
+                                <label for="phone">Telefon</label>
+                                <!-- MODIFICAT AICI: Adăugat name="Telefon" -->
+                                <input type="tel" id="phone" name="Telefon" placeholder="Introdu numărul de telefon">
                             </div>
-                            <!-- Un input ascuns pentru a salva automat data și ora completării în Excel -->
+                            <div class="form-group">
+                                <label for="subject">Subiect</label>
+                                <!-- MODIFICAT AICI: Adăugat name="Subiect" -->
+                                <input type="text" id="subject" name="Subiect" placeholder="Subiectul mesajului">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mesaj</label>
+                                <!-- MODIFICAT AICI: Adăugat name="Mesaj" -->
+                                <textarea id="message" name="Mesaj" required placeholder="Scrie mesajul tău aici"></textarea>
+                            </div>
+                            <button class="submit-button" type="submit">Trimite</button>
+                        </form>
+                    </div>
+
+                    <div class="info-card">
+                        <h2 class="section-title">Date Contact</h2>
+                        <div class="info-item">
+                            <div class="info-item-icon">📍</div>
+                            <div class="info-item-text">
+                                <span>Cahul, Republica Moldova</span>
+                                <span>Strada Flori, Nr. 12</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon">📞</div>
+                            <div class="info-item-text">
+                                <span>+373 600 00 000</span>
+                                <span>Suntem disponibili pentru apeluri</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon">✉️</div>
+                            <div class="info-item-text">
+                                <span>contact@floraelegance.md</span>
+                                <span>Trimite-ne un email pentru detalii</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon">🕒</div>
+                            <div class="info-item-text">
+                                <span>Luni - Sâmbătă</span>
+                                <span>08:00 - 20:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="map-section">
+                    <h2>Locația noastră</h2>
+                    <div class="map-card">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2825.9781669684636!2d28.18925877622752!3d45.90478402765737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c84b45ea0fd2d9%3A0x2d1da5a7f7926d47!2sCahul%2C%20Moldova!5e0!3m2!1sro!2smd!4v1700000000000!5m2!1sro!2smd" width="100%" height="260" style="border:0; border-radius:18px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © Flora Elegance 2026 | Contact
+    </footer>
+</body>
+</html>
