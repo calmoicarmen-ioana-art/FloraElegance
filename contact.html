@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Flora Elegance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Cormorant Garamond', serif;
+            background-color: #8c6f79;
+            color: #2d2d2d;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1180px;
+            background-color: #f2e8e7;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.18);
+        }
+
+        .content {
+            padding: 0;
+        }
+
+        .top-bar {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 36px;
+        }
+
+        .logo-image {
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2d2d2d;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d56d70;
+        }
+
+        nav a.active {
+            color: #d56d70;
+            font-weight: 500;
+        }
+
+        .hero-section {
+            background-color: #f3e6e5;
+            padding: 48px 42px;
+            border-bottom: 1px solid #e8ddd8;
+        }
+
+        .hero-section h1 {
+            font-size: 44px;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            font-weight: normal;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            color: #666;
+            max-width: 760px;
+            line-height: 1.8;
+        }
+
+        .main-section {
+            padding: 42px 42px 32px;
+            display: grid;
+            grid-template-columns: 1.4fr 0.9fr;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+            font-weight: normal;
+            color: #2d2d2d;
+        }
+
+        .contact-card,
+        .info-card,
+        .map-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: #7a7a7a;
+            letter-spacing: 0.4px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border-radius: 12px;
+            border: 1px solid #ece7e5;
+            background-color: #f7f3f2;
+            font-size: 14px;
+            color: #2d2d2d;
+            font-family: Georgia, serif;
+            resize: none;
+        }
+
+        .form-group textarea {
+            min-height: 160px;
+        }
+
+        .submit-button {
+            width: 154px;
+            padding: 14px 0;
+            border: none;
+            border-radius: 10px;
+            background-color: #d56d70;
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .submit-button:hover {
+            background-color: #c85a5d;
+        }
+
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .info-item-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f7f3f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d56d70;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .info-item-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-item-text span:first-child {
+            font-size: 15px;
+            color: #2d2d2d;
+            font-weight: 500;
+        }
+
+        .info-item-text span:last-child {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .map-section {
+            padding: 0 42px 42px;
+        }
+
+        .map-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            font-weight: normal;
+        }
+
+        .map-card {
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8c6f79;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            background-color: #e8d8d6;
+        }
+
+        footer {
+            background-color: #8c6f79;
+            color: #f2e8e7;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 1024px) {
+            .top-bar,
+            .hero-section,
+            .main-section,
+            .map-section {
+                padding-left: 28px;
+                padding-right: 28px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .main-section {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-wrapper {
+                padding: 14px;
+            }
+
+            .top-bar,
+            .hero-section,
+            .main-section,
+            .map-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .top-bar {
+                align-items: center;
+            }
+
+            nav {
+                gap: 14px;
+                justify-content: center;
+            }
+
+            .hero-section {
+                padding: 34px 0;
+            }
+
+            .hero-section h1 {
+                font-size: 30px;
+            }
+
+            .section-title,
+            .map-section h2 {
+                font-size: 22px;
+            }
+
+            .contact-card,
+            .info-card {
+                padding: 24px;
+            }
+
+            .map-card {
+                min-height: 180px;
+            }
+
+            .submit-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="content">
+                <div class="top-bar">
+                    <div class="logo-image">
+                        <img src="logo.svg" alt="Flora Elegance">
+                    </div>
+                    <nav>
+                        <a href="index.html">Acasa</a>
+                        <a href="ocazii speciale.html">Ocazii Speciale</a>
+                        <a href="catalog.html">Catalog</a>
+                        <a href="livrare.html">Livrare</a>
+                        <a href="contact.html" class="active">Contact</a>
+                    </nav>
+                </div>
+
+                <section class="hero-section">
+                    <h1>Contacteaza-ne</h1>
+                    <p>Suntem aici pentru a raspunde la toate intrebarile tale.</p>
+                </section>
+
+                <section class="main-section">
+                    <div>
+                        <form class="contact-card" action="succes.html">
+                            <h2 class="section-title">Trimite-ne un mesaj</h2>
+                            <div class="form-group">
+                                <label for="name">Nume complet</label>
+                                <input type="text" id="name" placeholder="Introdu numele tău">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" placeholder="Introdu email-ul">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" placeholder="Introdu numărul de telefon">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subiect</label>
+                                <input type="text" id="subject" placeholder="Subiectul mesajului">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mesaj</label>
+                                <textarea id="message" placeholder="Scrie mesajul tău aici"></textarea>
+                            </div>
+                            <button class="submit-button" type="submit">Trimite</button>
+                        </form>
+                    </div>
+
+                    <div class="info-card">
+                        <h2 class="section-title">Date Contact</h2>
+                        <div class="info-item">
+                            <div class="info-item-icon">📍</div>
+                            <div class="info-item-text">
+                                <span>Cahul, Republica Moldova</span>
+                                <span>Strada Flori, Nr. 12</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon">📞</div>
+                            <div class="info-item-text">
+                                <span>+373 600 00 000</span>
+                                <span>Suntem disponibili pentru apeluri</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon">✉️</div>
+                            <div class="info-item-text">
+                                <span>contact@floraelegance.md</span>
+                                <span>Trimite-ne un email pentru detalii</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon">🕒</div>
+                            <div class="info-item-text">
+                                <span>Luni - Sâmbătă</span>
+                                <span>08:00 - 20:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="map-section">
+                    <h2>Locația noastră</h2>
+                    <div class="map-card">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2825.9781669684636!2d28.18925877622752!3d45.90478402765737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c84b45ea0fd2d9%3A0x2d1da5a7f7926d47!2sCahul%2C%20Moldova!5e0!3m2!1sro!2smd!4v1700000000000!5m2!1sro!2smd" width="100%" height="260" style="border:0; border-radius:18px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © Flora Elegance 2026 | Contact
+    </footer>
+</body>
+</html>

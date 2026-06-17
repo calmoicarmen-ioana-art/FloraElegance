@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocazii Speciale - Flora Elegance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #8c7080;
+            color: #2d2d2d;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            background-color: #f2e8e7;
+            border-radius: 34px;
+            box-shadow: 0 28px 70px rgba(0,0,0,0.18);
+            overflow: hidden;
+        }
+
+        .content {
+            background-color: #f3eceb;
+            padding-bottom: 48px;
+        }
+
+        /* Header */
+        header {
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 40px;
+            border-bottom: 1px solid #e4d8d6;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .logo-image {
+            width: 120px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            color: #2d2d2d;
+            transition: color 0.25s;
+        }
+
+        nav a.active {
+            color: #d56d70;
+            font-weight: 700;
+        }
+
+        /* Main Section */
+        .hero-section {
+            padding: 54px 50px;
+            background-color: #f7f0ef;
+        }
+
+        .hero-section h1 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #2d2d2d;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            color: #6d6d6d;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 28px;
+            border-radius: 18px;
+            border: none;
+            background-color: #d56d70;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 14px 30px rgba(213,109,112,0.22);
+            transition: transform 0.25s ease, background-color 0.25s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: #bf5f63;
+        }
+
+        /* Occasions Section */
+        .occasions-section {
+            padding: 50px 50px 0;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 34px;
+            color: #2d2d2d;
+        }
+
+        .occasions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .occasion-card {
+            background-color: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .occasion-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .occasion-image {
+            width: 100%;
+            height: 160px;
+            background-color: rgba(213,109,112,0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .occasion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .occasion-label {
+            padding: 18px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .occasion-label h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #2d2d2d;
+        }
+
+        /* Popular Collections Section */
+        .collections-section {
+            padding: 60px 50px 0;
+        }
+
+        .collection-card {
+            background-color: white;
+            border-radius: 24px;
+            padding: 32px;
+            display: flex;
+            gap: 36px;
+            align-items: center;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
+            margin-bottom: 60px;
+        }
+
+        .collection-image {
+            width: 180px;
+            height: 140px;
+            background-color: rgba(213,109,112,0.16);
+            border-radius: 16px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .collection-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .collection-content {
+            flex: 1;
+        }
+
+        .collection-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2d2d2d;
+        }
+
+        .collection-content p {
+            font-size: 15px;
+            color: #6d6d6d;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 11px 24px;
+            border-radius: 16px;
+            border: none;
+            background-color: #d56d70;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 22px rgba(213,109,112,0.18);
+            transition: transform 0.25s ease, background-color 0.25s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            background-color: #bf5f63;
+        }
+
+        /* Why Us Section */
+        .why-us-section {
+            padding: 60px 50px 0;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+
+        .why-us-card {
+            background-color: white;
+            border-radius: 22px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .why-us-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .why-us-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2d2d2d;
+        }
+
+        .why-us-card p {
+            font-size: 14px;
+            color: #6d6d6d;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            color: #7c6065;
+            font-size: 14px;
+            background-color: #d4b5b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .occasions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-card {
+                flex-direction: column;
+            }
+
+            .collection-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page-wrapper {
+                padding: 14px;
+            }
+
+            .container {
+                border-radius: 24px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                gap: 18px;
+            }
+
+            .hero-section {
+                padding: 40px 24px;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+                margin-bottom: 16px;
+            }
+
+            .occasions-section,
+            .collections-section,
+            .why-us-section {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .occasions-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .why-us-grid {
+                gap: 18px;
+            }
+
+            .collection-card {
+                padding: 24px;
+                gap: 20px;
+                margin-bottom: 40px;
+            }
+
+            .collection-image {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="content">
+                <!-- Header -->
+                <header>
+                    <div class="logo">
+                        <div class="logo-image">
+                            <img src="logo.svg" alt="Flora Elegance">
+                        </div>
+                    </div>
+                    <nav>
+                        <a href="index.html">Acasă</a>
+                        <a href="ocazii speciale.html" class="active">Ocazii Speciale</a>
+                        <a href="catalog.html">Catalog</a>
+                        <a href="livrare.html">Livrare</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </header>
+
+            
+                <section class="hero-section">
+                    <h1>Ocazii Speciale</h1>
+                    <p>Buchete și aranjamente florale pentru fiecare moment important</p>
+                    <a href="catalog.html" class="btn-primary">Vezi colectiile</a>
+                </section>
+
+             
+                <section class="occasions-section">
+                    <h2 class="section-title">Alege ocazia</h2>
+                    <div class="occasions-grid">
+                        <div class="occasion-card">
+                            <div class="occasion-image">
+                                <img src="flori4.png" alt="Nuntă">
+                            </div>
+                            <div class="occasion-label">
+                                <h3>Nuntă</h3>
+                            </div>
+                        </div>
+                        <div class="occasion-card">
+                            <div class="occasion-image">
+                                <img src="assets/flori5.png" alt="Aniversare">
+                            </div>
+                            <div class="occasion-label">
+                                <h3>Aniversare</h3>
+                            </div>
+                        </div>
+                        <div class="occasion-card">
+                            <div class="occasion-image">
+                                <img src="assets/flori6.png" alt="Valentine's Day">
+                            </div>
+                            <div class="occasion-label">
+                                <h3>Valentine's Day</h3>
+                            </div>
+                        </div>
+                        <div class="occasion-card">
+                            <div class="occasion-image">
+                                <img src="assets/flori7.png" alt="8 Martie">
+                            </div>
+                            <div class="occasion-label">
+                                <h3>8 Martie</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Popular Collections Section -->
+                <section class="collections-section">
+                    <h2 class="section-title">Colectii populare</h2>
+                    <div class="collection-card">
+                        <div class="collection-image">
+                            <img src="flori8.png" alt="Buchet Romantic Deluxe">
+                        </div>
+                        <div class="collection-content">
+                            <h3>Buchet Romantic Deluxe</h3>
+                            <p>Trandafiri premium și flori decorative pentru ocazii speciale.</p>
+                            <a href="contact.html" class="btn-secondary">Comandă acum</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Why Us Section -->
+                <section class="why-us-section">
+                    <h2 class="section-title">De ce să ne alegi?</h2>
+                    <div class="why-us-grid">
+                        <div class="why-us-card">
+                            <h3>Flori Premium</h3>
+                            <p>Selecție de flori prospete și de cea mai bună calitate</p>
+                        </div>
+                        <div class="why-us-card">
+                            <h3>Livrare Rapidă</h3>
+                            <p>Livrare în aceeași zi pentru comenzile plasate înainte de ora 14:00</p>
+                        </div>
+                        <div class="why-us-card">
+                            <h3>Aranjamente Unice</h3>
+                            <p>Design personalizat și servicii de aranjament profesional</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>© Flora Elegance - Ocazii Speciale</footer>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livrare - Flora Elegance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Cormorant Garamond', serif;
+            background-color: #8c6f79;
+            color: #2d2d2d;
+        }
+
+        .page-wrapper {
+            background-color: #8c6f79;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #f2e8e7;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 1180px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 36px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #e8ddd8;
+        }
+
+        .logo {
+            display: flex;
+            gap: 0;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 120px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2d2d2d;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d56d70;
+        }
+
+        nav a.active {
+            color: #d56d70;
+            font-weight: 500;
+        }
+
+        .hero-section {
+            margin-bottom: 56px;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            color: #2d2d2d;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            padding: 14px 36px;
+            background-color: #d56d70;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: #c85a5d;
+        }
+
+        .how-it-works {
+            margin-bottom: 56px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #2d2d2d;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+            font-weight: normal;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: #d56d70;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .step-title {
+            font-size: 18px;
+            color: #2d2d2d;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            letter-spacing: 0.3px;
+        }
+
+        .delivery-zones {
+            margin-bottom: 56px;
+        }
+
+        .zones-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 56px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .zone-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .zone-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            color: #2d2d2d;
+            letter-spacing: 0.5px;
+        }
+
+        .zone-item::before {
+            content: 'âœ“';
+            color: #d56d70;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 24px;
+        }
+
+        .tariffs-section {
+            margin-bottom: 40px;
+        }
+
+        .tariffs-table {
+            width: 100%;
+            background-color: white;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tariffs-table thead {
+            background-color: white;
+        }
+
+        .tariffs-table th {
+            padding: 24px;
+            text-align: left;
+            font-size: 16px;
+            color: #2d2d2d;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            border-bottom: 2px solid #e8ddd8;
+        }
+
+        .tariffs-table td {
+            padding: 20px 24px;
+            font-size: 16px;
+            color: #2d2d2d;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e8ddd8;
+        }
+
+        .tariffs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tariff-price {
+            color: #d56d70;
+        }
+
+        .tariff-free {
+            color: #d56d70;
+        }
+
+        footer {
+            background-color: #8c6f79;
+            color: #f2e8e7;
+            text-align: center;
+            padding: 24px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .content {
+                padding: 28px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            nav {
+                gap: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .zones-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .content {
+                padding: 20px;
+            }
+
+            header {
+                margin-bottom: 28px;
+                padding-bottom: 16px;
+            }
+
+            nav {
+                gap: 16px;
+                font-size: 14px;
+            }
+
+            .hero-section h1 {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+
+            .hero-section p {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 28px;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .step-number {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+            }
+
+            .zones-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 24px;
+            }
+
+            .zone-item {
+                font-size: 14px;
+            }
+
+            .tariffs-table th,
+            .tariffs-table td {
+                padding: 16px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="content">
+                <!-- Header -->
+                <header>
+                    <div class="logo">
+                        <div class="logo-image">
+                            <img src="logo.svg" alt="Flora Elegance">
+                        </div>
+                    </div>
+                    <nav>
+                        <a href="index.html">AcasÄƒ</a>
+                        <a href="ocazii speciale.html">Ocazii Speciale</a>
+                        <a href="catalog.html">Catalog</a>
+                        <a href="livrare.html" class="active">Livrare</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </header>
+
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <h1>Livrare RapidÄƒ de Flori</h1>
+                    <p>LivrÄƒri buchete È™i aranjamente florale Ã®n aceaÈ™i zi.</p>
+                    <a href="contact.html" class="btn-primary">ComandÄƒ Acum</a>
+                </section>
+
+                <!-- How It Works -->
+                <section class="how-it-works">
+                    <h2 class="section-title">Cum funcÈ›ioneazÄƒ?</h2>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Alege buchetul</div>
+                            <div class="step-description">SelecteazÄƒ produsul preferat</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-title">CompleteazÄƒ datele</div>
+                            <div class="step-description">Introduci adresa È™i contactul</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-title">PrimeÈ™ti livrarea</div>
+                            <div class="step-description">Livrare rapid È™i sigur</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Delivery Zones -->
+                <section class="delivery-zones">
+                    <h2 class="section-title">Zone de Livrare</h2>
+                    <div class="zones-grid">
+                        <div class="zone-list">
+                            <div class="zone-item">Cahul</div>
+                            <div class="zone-item">ChiÈ™inÄƒu</div>
+                            <div class="zone-item">Comrat</div>
+                        </div>
+                        <div class="zone-list">
+                            <div class="zone-item">Cimislia</div>
+                            <div class="zone-item">Cantemir</div>
+                            <div class="zone-item">Leova</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tariffs -->
+                <section class="tariffs-section">
+                    <h2 class="section-title">Tarife Livrare</h2>
+                    <table class="tariffs-table">
+                        <thead>
+                            <tr>
+                                <th>Oras</th>
+                                <th>Pret</th>
+                            </tr>
+                        </theadÿ„¼   ;ø„´   ¹  ÿ…ÿt;øu
+9L$T‡¬   …ÿt;øu9Œ$  ‡—   …ÿt;øu
+9L$\‡…   …ÿt;øu9L$`ww…ÿ…ý9öÿ‰\$pèìiüÿ„À„ì9öÿIƒçþHT$pI‹ÏHÿé4  D  …À…Ì9öÿ‹D$pƒÀûƒø†¼9öÿ‹„$  À‰„$  ‹D$\À‰D$\é9öÿ¹  ÿ9L$X†Bÿÿÿ¿   ‰|$Pé:öÿ‹ÃéÔ:öÿL‹öH‹ÖèZ‡úÿH‹VH‰Bé;öÿI‹è©föÿeH‹%`   M‹Æ3ÒH‹I0HÿxÂ D  ‹|$Péõ9öÿ¸W   éí9öÿ¹W   éBöÿ¸  ÀéHöÿÇD$h@  éßIöÿD‹ÃL‹ËéGFöÿÇD$h@  éüFöÿH‹L$@LD$PE‹ÎH‰\$ Aƒá‹Öè"böÿ‹øétGöÿH‹M˜HÿP³ D  éYGöÿÇD$h@  éñGöÿÇD$h@  éGIöÿH‹L$@LD$PAƒæH‰\$ E‹Î‹ÖèÎaöÿ‹øéUHöÿH‹M¨Hÿü² D  é?HöÿÌHÿé² D  éKOöÿA¹  éEQöÿA„Ý…8Röÿé5Söÿƒ} †)Röÿ¾]  éRöÿƒ} †Röÿ¾]  éRöÿAþÿÿ  „þQöÿéûRöÿA@A½   ;ÂwA;ÀrE3ÛfF‰GE‹é7

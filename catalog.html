@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Produse - Flora Elegance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Cormorant Garamond', serif;
+            background-color: #8c6f79;
+            color: #2d2d2d;
+        }
+
+        .page-wrapper {
+            background-color: #8c6f79;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: #f2e8e7;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 1180px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 36px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #e8ddd8;
+        }
+
+        .logo {
+            display: flex;
+            gap: 0;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 120px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2d2d2d;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #d56d70;
+        }
+
+        nav a.active {
+            color: #d56d70;
+            font-weight: 500;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            color: #2d2d2d;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 48px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e8ddd8;
+        }
+
+        .filter-tabs button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            color: #999;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .filter-tabs button:hover,
+        .filter-tabs button.active {
+            color: #2d2d2d;
+            font-weight: 500;
+        }
+
+        .filter-tabs button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -21px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #d56d70;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-bottom: 48px;
+        }
+
+        .product-card {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-color: #dcc9c1;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #d56d70;
+            letter-spacing: 0.5px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .pagination a,
+        .pagination span {
+            font-size: 14px;
+            color: #2d2d2d;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pagination a:hover {
+            background-color: #e8ddd8;
+        }
+
+        .pagination .active {
+            background-color: #d56d70;
+            color: white;
+        }
+
+        .newsletter-section {
+            background: linear-gradient(135deg, #f0dcd7 0%, #ead5cf 100%);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .newsletter-section h3 {
+            font-size: 20px;
+            color: #2d2d2d;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            font-weight: normal;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .newsletter-form input {
+            padding: 12px 20px;
+            border: 1px solid #e8ddd8;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 14px;
+            width: 280px;
+            background-color: white;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-form button {
+            padding: 12px 32px;
+            background-color: #d56d70;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #c85a5d;
+        }
+
+        footer {
+            background-color: #8c6f79;
+            color: #f2e8e7;
+            text-align: center;
+            padding: 24px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .content {
+                padding: 28px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            nav {
+                gap: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-section h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            header {
+                margin-bottom: 28px;
+                padding-bottom: 16px;
+            }
+
+            nav {
+                gap: 16px;
+                font-size: 14px;
+            }
+
+            .hero-section h1 {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+
+            .hero-section p {
+                font-size: 14px;
+            }
+
+            .filter-tabs {
+                gap: 16px;
+                margin-bottom: 32px;
+            }
+
+            .filter-tabs button {
+                font-size: 12px;
+            }
+
+            .product-image {
+                height: 160px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="content">
+                <!-- Header -->
+                <header>
+                    <div class="logo">
+                        <div class="logo-image">
+                            <img src="logo.svg" alt="Flora Elegance">
+                        </div>
+                    </div>
+                    <nav>
+                        <a href="index.html">Acasă</a>
+                        <a href="ocazii speciale.html">Ocazii Speciale</a>
+                        <a href="catalog.html" class="active">Catalog</a>
+                        <a href="livrare.html">Livrare</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </header>
+
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <h1>Catalog Produse</h1>
+                    <p>Descoperă colecția noastră completă de buchete și aranjamente florale</p>
+                </section>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <button class="active">Toata floria</button>
+                    <button>Trandafiri</button>
+                    <button>Buchete</button>
+                    <button>Cadouri</button>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori8.png" alt="Buchet Romantic"></div>
+                        <div class="product-name">Buchet Romantic</div>
+                        <div class="product-price">651 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori9.png" alt="Trandafiri Premium"></div>
+                        <div class="product-name">Trandafiri Premium</div>
+                        <div class="product-price">850 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori10.png" alt="Buchet Elegant"></div>
+                        <div class="product-name">Buchet Elegant</div>
+                        <div class="product-price">750 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori11.png" alt="Cutie Florala"></div>
+                        <div class="product-name">Cutie Florala</div>
+                        <div class="product-price">920 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori12.jpg" alt="Buchet Pastel"></div>
+                        <div class="product-name">Buchet Pastel</div>
+                        <div class="product-price">580 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori13.jpg" alt="Lalele Deluxe"></div>
+                        <div class="product-name">Lalele Deluxe</div>
+                        <div class="product-price">690 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori14.jpg" alt="Buchet Luxury"></div>
+                        <div class="product-name">Buchet Luxury</div>
+                        <div class="product-price">1200 MDL</div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image"><img src="flori15.jpeg" alt="Aranjament Floral"></div>
+                        <div class="product-name">Aranjament Floral</div>
+                        <div class="product-price">590 MDL</div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#">«</a>
+                    <span class="active">1</span>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">»</a>
+                </div>
+
+                <!-- Newsletter Section -->
+                <section class="newsletter-section">
+                    <h3>Abonează-te pentru oferte speciale</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Email-ul tău">
+                        <a href="contact.html" class="newsletter-button">Abonează</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © Flora Elegance - Catalog Produse
+    </footer>
+</body>
+</html>
